@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to convert Excel-like column labels to integer
+int convertExcelColumnToInt(string column) {
+    int result = 0;
+    for (char c : column) {
+        result = result * 26 + (c - 'A' + 1);
+    }
+    return result;
+}
+
+// Function to check if the line passes through the origin
+bool pass_origin(int X1, string Y1, int X2, string Y2) {
+    // Step 1: Convert Y1 and Y2 to integers
+    int Y1_converted = convertExcelColumnToInt(Y1);
+    int Y2_converted = convertExcelColumnToInt(Y2);
+    
+    // Step 2: Check the condition for passing through origin
+    // Using cross-multiplication to avoid floating-point calculations
+    if (Y1_converted * X2 == Y2_converted * X1) {
+        return true; // Passes through the origin
+    }
+    return false; // Does not pass through the origin
+}
+
+int main() {
+    // Example 1
+    int X1 = 1, X2 = 2;
+    string Y1 = "AA", Y2 = "AB";
+    
+    if (pass_origin(X1, Y1, X2, Y2)) {
+        cout << "1" << endl; // Line passes through origin
+    } else {
+        cout << "0" << endl; // Line does not pass through origin
+    }
+
+    // Example 2
+    X1 = 1, X2 = 2;
+    Y1 = "A", Y2 = "B";
+    
+    if (pass_origin(X1, Y1, X2, Y2)) {
+        cout << "1" << endl; // Line passes through origin
+    } else {
+        cout << "0" << endl; // Line does not pass through origin
+    }
+
+    return 0;
+}
