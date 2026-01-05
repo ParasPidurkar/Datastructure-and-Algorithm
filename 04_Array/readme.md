@@ -31,3 +31,5 @@ int primes[] = {2, 3, 5, 7, 11};
 
 // Partial Initialization (Remaining become 0)
 int scores[10] = {100, 90, 80} ;
+
+
